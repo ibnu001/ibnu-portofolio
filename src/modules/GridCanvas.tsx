@@ -40,7 +40,14 @@ export default function GridCanvas({ className }: GridCanvasProps) {
       canvas.height = height;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+    const touch = e.touches[0];
+      mouseX = touch.clientX;
+      mouseY = touch.clientY;
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
     window.addEventListener("resize", handleResize);
 
     const draw = () => {
@@ -81,6 +88,7 @@ export default function GridCanvas({ className }: GridCanvasProps) {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("resize", handleResize);
     };
   }, [theme]);
