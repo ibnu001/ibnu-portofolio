@@ -41,7 +41,7 @@ export default function GridCanvas({ className }: GridCanvasProps) {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-    const touch = e.touches[0];
+      const touch = e.touches[0];
       mouseX = touch.clientX;
       mouseY = touch.clientY;
     };
@@ -70,7 +70,9 @@ export default function GridCanvas({ className }: GridCanvasProps) {
           const shiftedY = y + offsetY;
 
           let opacity = 0.2;
-          if (dist < 200) {
+          const activeDist = window.innerWidth < 768 ? 100 : 200;
+
+          if (dist < activeDist) {
             opacity = 1;
           }
 
@@ -96,7 +98,10 @@ export default function GridCanvas({ className }: GridCanvasProps) {
   return (
     <canvas
       ref={canvasRef}
-      className={cn("fixed inset-0 w-full pointer-events-none", className)}
+      className={cn(
+        "fixed inset-0 w-full pointer-events-none touch-none [overscroll-behavior:none]",
+        className
+      )}
     />
   );
 }
