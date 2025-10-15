@@ -28,7 +28,7 @@ export default function Navbar() {
             <p className="max-md:hidden">Back</p>
           </Button>
         )}
-        <h1 className="text-xl md:text-5xl font-bold">{title || "Hello world!"}</h1>
+        <h1 className="text-3xl md:text-5xl font-bold">{title || "Hello world!"}</h1>
       </div>
 
       <div className="flex flex-row items-center gap-2 md:gap-4">
