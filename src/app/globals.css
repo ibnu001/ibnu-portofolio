@@ -1,10 +1,22 @@
 @import "tailwindcss";
-@plugin './hero.ts';
-/* Note: You may need to change the path to fit your project structure */
-@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --color-primary: #003161;
+  --color-primary-dark: #FDEB9E;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101c22;
+  --color-light: #111618;
+  --color-dark: #f0f3f4;
+  --color-secondary-light: #617c89;
+  --color-secondary-dark: #9CA3AF;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #1F2937;
+  --color-bdr-light: #f0f3f4;
+  --color-bdr-dark: #374151;
+}
 
 html {
-  overscroll-behavior: none;
+  overscroll-behavior: smooth;
 }

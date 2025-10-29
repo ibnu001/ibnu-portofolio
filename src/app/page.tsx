@@ -1,33 +1,26 @@
 "use client";
 
-import { useNavbarStore } from "@/store/navbarStore";
-import { useEffect } from "react";
+import Earth3D from "@/components/3D/Earth3D";
+import Moon3D from "@/components/3D/Moon3D";
+import GridCanvas from "@/components/GridCanvas";
+import Header from "@/components/Header";
+import Landing from "@/modules/Landing";
 
 export default function Home() {
-  const setNavbar = useNavbarStore((s) => s.setNavbar);
-  useEffect(() => {
-    setNavbar({ title: "Hello World!", showBackButton: false });
-  }, [setNavbar]);
-
-  const num = Array.from({ length: 50 }, (_, i) => i);
-
   return (
-    <div className="block w-full min-h-[2000px]">
-      <div className="flex flex-col max-w-7xl mx-auto mb-[200px] mt-[50px]">
-        {num.map((n) => (
-          <div
-            key={n}
-            className="bg-background/60 backdrop-blur-[2px] max-md:mx-4 max-lg:mx-6 max-2xl:mx-10 px-4 sm:px-6 lg:px-8 py-10 border-1 border-default-900 mb-2 transition rounded"
-          >
-            <h2 className="text-2xl font-semibold mb-4">Section {n + 1}</h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              This is some sample content for section {n + 1}. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
-        ))}
-      </div>
+    <div className="flex flex-col items-center">
+      <Header />
+      <GridCanvas className="-z-20" />
+
+      <Earth3D className="fixed -top-[180px] -left-[180px] pointer-events-none select-none overflow-hidden -z-10 blur-[1px]" />
+      <Moon3D className="fixed -bottom-[200px] -right-[200px] pointer-events-none select-none overflow-hidden -z-10 blur-[3px]" />
+      <Landing />
+
+      <footer className="text-center py-6 border-t border-bdr-light dark:border-bdr-dark">
+        <p className="text-secondary-light dark:text-secondary-dark text-sm">
+          © 2024 Alex Doe. All Rights Reserved.
+        </p>
+      </footer>
     </div>
   );
 }

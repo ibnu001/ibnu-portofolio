@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@heroui/react";
+import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 
@@ -99,7 +99,7 @@ export default function GridCanvas({ className }: GridCanvasProps) {
     <canvas
       ref={canvasRef}
       className={cn(
-        "fixed inset-0 w-full pointer-events-none touch-none [overscroll-behavior:none]",
+        "bg-black fixed inset-0 w-full pointer-events-none touch-none overscroll-none",
         className
       )}
     />
