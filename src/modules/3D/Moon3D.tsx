@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
-const Kitten3D = ({ className }: { className?: string }) => {
+const Moon3D = ({className}: {className?: string}) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -16,16 +16,18 @@ const Kitten3D = ({ className }: { className?: string }) => {
     // === Setup dasar ===
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      50,
+      45,
       mount.clientWidth / mount.clientHeight,
       0.1,
       100
     );
-    camera.position.set(0, 0, 3);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 1, 3);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setSize(
+      mount.clientWidth,
+      mount.clientHeight
+    );
     renderer.setPixelRatio(window.devicePixelRatio);
     mount.appendChild(renderer.domElement);
 
@@ -40,22 +42,17 @@ const Kitten3D = ({ className }: { className?: string }) => {
     // === Load model GLB ===
     const loader = new GLTFLoader();
     loader.load(
-      "/models/kitten.glb",
+      "/models/moon.glb",
       (gltf) => {
         const model = gltf.scene;
-        model.scale.set(0.23, 0.23, 0.23);
+        model.scale.set(0.03, 0.03, 0.03);
 
         // Center model
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         model.position.sub(center);
 
-        model.rotation.y = -Math.PI / 1.8;
-        // Buat group sebagai pivot tengah
-        const pivot = new THREE.Group();
-        pivot.add(model);
-
-        scene.add(pivot);
+        scene.add(model);
 
         // Animasi rotasi ringan
         const animate = () => {
@@ -80,9 +77,13 @@ const Kitten3D = ({ className }: { className?: string }) => {
     // === Resize handler ===
     const handleResize = () => {
       if (!mount) return;
-      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.aspect =
+        mount.clientWidth / mount.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
+      renderer.setSize(
+        mount.clientWidth,
+        mount.clientHeight
+      );
     };
 
     window.addEventListener("resize", handleResize);
@@ -96,12 +97,9 @@ const Kitten3D = ({ className }: { className?: string }) => {
   return (
     <div
       ref={mountRef}
-      className={cn(
-        "w-32 h-32 aspect-square bg-transparent rounded-2xl",
-        className
-      )}
+      className={cn("w-[350px] md:w-[400px] lg:w-[500px] h-[350px] md:h-[400px] lg:h-[500px] aspect-square bg-transparent rounded-2xl", className)}
     />
   );
 };
 
-export default Kitten3D;
+export default Moon3D;

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 const Atat3D = ({ className }: { className?: string }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -120,7 +120,7 @@ const Atat3D = ({ className }: { className?: string }) => {
     <div
       ref={mountRef}
       className={cn(
-        "w-32 h-32 aspect-square bg-transparent rounded-2xl",
+        "w-[500px] h-[500px] aspect-square bg-transparent rounded-2xl",
         className
       )}
     />

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 const Earth3D = ({className}: {className?: string}) => {
   const mountRef = useRef<HTMLDivElement | null>(null);

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Muhammad Ibnu Al Yazzar • Frontend Developer",
   description:
-    "Portofolio pribadi Muhammad Ibnu Al Yazzar — seorang Frontend Developer yang berfokus pada pembuatan antarmuka web modern, responsif, dan berkualitas tinggi menggunakan Next.js, TypeScript, dan Tailwind CSS.",
+    "A web developer who enjoys building clean, fast, and user-friendly websites. I work mostly with Next.js, TypeScript, and Tailwind CSS, focusing on creating interfaces that feel smooth and intuitive. I like learning new things, experimenting with different UI ideas, and making sure every project I build looks and feels right.",
   keywords: [
     "Muhammad Ibnu Al Yazzar",
     "Frontend Developer",
@@ -32,16 +32,8 @@ export const metadata: Metadata = {
     title: "Muhammad Ibnu Al Yazzar • Frontend Developer",
     description:
       "Lihat portofolio Muhammad Ibnu Al Yazzar, Frontend Developer yang membangun aplikasi web modern dengan Next.js dan TypeScript.",
-    // url: "https://ibnualyazzar.dev", // ganti sesuai domain kamu nanti
+    url: "https://ibnu-folio.vercel.app",
     siteName: "Muhammad Ibnu Al Yazzar Portfolio",
-    // images: [
-    //   {
-    //     url: "/og-image.png", // nanti bisa kamu buat satu banner portofolio
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Muhammad Ibnu Al Yazzar Portfolio",
-    //   },
-    // ],
     locale: "id_ID",
     type: "website",
   },
@@ -62,7 +54,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-        </ThemeProvider>  
+        </ThemeProvider>
       </body>
     </html>
   );

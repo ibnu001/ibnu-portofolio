@@ -1,4 +1,6 @@
-import { handleNavClick } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { cn, handleNavClick } from "../../lib/utils";
+import Image from "next/image";
 
 const headerData = [
   { title: "About", href: "#about", offset: -80 },
@@ -8,11 +10,11 @@ const headerData = [
 
 export default function Header() {
   return (
-    <header className="sticky flex items-center justify-center w-full whitespace-nowrap border-b border-solid border-bdr-light dark:border-bdr-dark py-4 top-0 bg-background-light/20 dark:bg-background-dark/20 backdrop-blur-sm z-50">
+    <header className="sticky flex items-center justify-center w-full whitespace-nowrap border-b border-b-white/20 py-4 top-0 bg-transparent backdrop-blur-sm z-50">
       <div className="flex items-center w-full justify-between whitespace-nowrap max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           <div className="size-6 text-white">
-            <img src="/japan.png" alt="Ibnu Al Yazzar Logo" />
+            <Image width={500} height={500} src="/japan.png" alt="Ibnu Al Yazzar Logo" />
             {/* <svg
               fill="none"
               viewBox="0 0 48 48"
@@ -24,21 +26,31 @@ export default function Header() {
               ></path>
             </svg> */}
           </div>
-          <h2 className="text-light dark:text-dark text-lg font-bold leading-tight tracking-[-0.015em]">
+          <h2 className="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
             Ibnu Al Yazzar
           </h2>
         </div>
         <div className="flex flex-1 items-center justify-end gap-6">
-          <nav className="hidden sm:flex items-center gap-8">
+          <nav className="hidden sm:flex items-center gap-4">
             {headerData.map((item, index) => (
-              <a
+              <div
                 key={item.href + index}
-                className="text-light dark:text-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary-dark transition-colors"
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href.slice(1), item.offset)}
+                onClick={() => handleNavClick(item.href.slice(1), item.offset)}
+                className="px-4 h-fit"
               >
-                {item.title}
-              </a>
+                <Button
+                  variant="link"
+                  className={cn(
+                    "relative overflow-hidden rounded-none p-0 hover:no-underline",
+                    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5",
+                    "after:w-full after:bg-white after:scale-x-0 after:origin-right after:transition-transform after:duration-300",
+                    "hover:after:scale-x-100 hover:after:origin-left"
+                  )}
+                  style={{ display: "inline-block" }}
+                >
+                  {item.title}
+                </Button>
+              </div>
             ))}
           </nav>
         </div>
